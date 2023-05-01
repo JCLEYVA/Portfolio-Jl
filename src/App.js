@@ -14,7 +14,10 @@ class App extends Component {
     this.state = {
       foo: "bar",
       resumeData: {},
-      sharedData: {},
+      sharedData: {
+        name: "",
+        headline: "Your personal headline goes here", // Add your personal headline here,
+      },
     };
   }
 
@@ -27,19 +30,34 @@ class App extends Component {
         : `res_secondaryLanguage.json`;
     this.loadResumeFromPath(resumePath);
   }
-
   swapCurrentlyActiveLanguage = (oppositeLangIconId) => {
     var pickedLangIconId =
       oppositeLangIconId === window.$primaryLanguageIconId
         ? window.$secondaryLanguageIconId
         : window.$primaryLanguageIconId;
-    document
-      .getElementById(oppositeLangIconId)
-      .removeAttribute("filter", "brightness(40%)");
-    document
-      .getElementById(pickedLangIconId)
-      .setAttribute("filter", "brightness(40%)");
+    var oppositeLangIcon = document.getElementById(oppositeLangIconId);
+    if (oppositeLangIcon) {
+      oppositeLangIcon.removeAttribute("filter");
+      oppositeLangIcon.style.filter = "brightness(40%)";
+    }
+    var pickedLangIcon = document.getElementById(pickedLangIconId);
+    if (pickedLangIcon) {
+      pickedLangIcon.setAttribute("filter", "brightness(40%)");
+      pickedLangIcon.style.filter = "brightness(100%)";
+    }
   }
+  // swapCurrentlyActiveLanguage = (oppositeLangIconId) => {
+  //   var pickedLangIconId =
+  //     oppositeLangIconId === window.$primaryLanguageIconId
+  //       ? window.$secondaryLanguageIconId
+  //       : window.$primaryLanguageIconId;
+  //   document
+  //     .getElementById(oppositeLangIconId)
+  //     .removeAttribute("filter", "brightness(40%)");
+  //   document
+  //     .getElementById(pickedLangIconId)
+  //     .setAttribute("filter", "brightness(40%)");
+  // }
 
   componentDidMount = () => {
     this.loadSharedData();
@@ -79,6 +97,8 @@ class App extends Component {
 
   render() {
     return (
+     
+     
       <Router>
         <Header sharedData={this.state.sharedData.basic_info} />
         <Routes>

@@ -5,12 +5,17 @@
       "social": [
         {
           "name": "github",
-          "url": "https://github.com",
+          "url": "https://github.com/jcleyva",
           "class": "fab fa-github"
         },
         {
-          "name": "instagram",
-          "url": "https://www.instagram.com",
+          "name": "LinkedIn",
+          "url": "https://www.linkedin.com/in/jeanetteleyva/",
+          "class": "fab fa-instagram"
+        },
+        {
+          "name": "Facebook",
+          "url": "https://www.facebook.com/JeanetteChristineL/",
           "class": "fab fa-instagram"
         }
       ],
